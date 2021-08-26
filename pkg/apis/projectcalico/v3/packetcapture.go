@@ -124,7 +124,7 @@ type PacketCaptureFile struct {
 	// attached to the current node
 
 	// +kubebuilder:validation:Enum=Capturing;Inactive
-	State *PacketCaptureState `json:"state,omitempty" validate:"omitempty"`
+	State PacketCaptureState `json:"state,omitempty" validate:"omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
