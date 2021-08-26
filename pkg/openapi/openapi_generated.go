@@ -7258,6 +7258,12 @@ func schema_pkg_apis_projectcalico_v3_PacketCaptureFile(ref common.ReferenceCall
 							},
 						},
 					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},

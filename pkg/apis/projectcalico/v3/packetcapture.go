@@ -74,15 +74,11 @@ type PacketCaptureSpec struct {
 	// Defines the start time from which this PacketCapture will capture packets.
 	// If omitted or the value is in the past, the capture will start immediately.
 	// If the value is changed to a future time, capture will stop immediately and restart at that time
-	// +optional
-	// +kubebuilder:validation:Format="date-time"
 	StartTime *metav1.Time `json:"startTime,omitempty" validate:"omitempty"`
 
 	// Defines the end time at which this PacketCapture will stop capturing packets.
 	// If omitted the capture will continue indefinitely.
 	// If the value is changed to the past, capture will stop immediately.
-	// +optional
-	//+kubebuilder:validation:Format="date-time"
 	EndTime *metav1.Time `json:"endTime,omitempty" validate:"omitempty"`
 }
 
@@ -121,6 +117,11 @@ type PacketCaptureFile struct {
 	// "{workload endpoint name}_{host network interface}.pcap" .
 	// Rotated capture files name will contain an index matching the rotation timestamp.
 	FileNames []string `json:"fileNames,omitempty" validate:"omitempty,dive"`
+
+	// Determines whether a PacketCapture is capturing traffic from any interface
+	// attached to the current node
+
+	State *PacketCaptureState `json:"state,omitempty" validate:"omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
