@@ -7385,12 +7385,14 @@ func schema_pkg_apis_projectcalico_v3_PacketCaptureSpec(ref common.ReferenceCall
 					"startTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Defines the start time from which this PacketCapture will capture packets. If omitted or the value is in the past, the capture will start immediately. If the value is changed to a future time, capture will stop immediately and restart at that time",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
 					"endTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Defines the end time at which this PacketCapture will stop capturing packets. If omitted the capture will continue indefinitely. If the value is changed to the past, capture will stop immediately.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
