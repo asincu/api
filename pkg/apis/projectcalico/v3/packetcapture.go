@@ -75,17 +75,15 @@ type PacketCaptureSpec struct {
 	// If omitted or the value is in the past, the capture will start immediately.
 	// If the value is changed to a future time, capture will stop immediately and restart at that time
 	// +optional
-	// +nullable
 	// +kubebuilder:validation:Format="date-time"
-	StartTime *metav1.Time `json:"startTime,omitempty" validate:"omitempty"`
+	StartTime metav1.Time `json:"startTime,omitempty" validate:"omitempty"`
 
 	// Defines the end time at which this PacketCapture will stop capturing packets.
 	// If omitted the capture will continue indefinitely.
-	// If the value is changed to the past, capture will stop immediately.
+	// If the value is changed to the past, capture will stop immediately
 	// +optional
-	// +nullable
 	//+kubebuilder:validation:Format="date-time"
-	EndTime *metav1.Time `json:"endTime,omitempty" validate:"omitempty"`
+	EndTime metav1.Time `json:"endTime,omitempty" validate:"omitempty"`
 }
 
 // A PacketCaptureRule encapsulates a set of match criteria for traffic captured from an interface.
