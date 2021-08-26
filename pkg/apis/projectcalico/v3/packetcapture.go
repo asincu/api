@@ -76,14 +76,14 @@ type PacketCaptureSpec struct {
 	// If the value is changed to a future time, capture will stop immediately and restart at that time
 	// +optional
 	// +kubebuilder:validation:Format="date-time"
-	StartTime *metav1.Time `json:"startTime,omitempty"`
+	StartTime *metav1.Time `json:"startTime,omitempty" validate:"omitempty"`
 
 	// Defines the end time at which this PacketCapture will stop capturing packets.
 	// If omitted the capture will continue indefinitely.
 	// If the value is changed to the past, capture will stop immediately.
 	// +optional
 	//+kubebuilder:validation:Format="date-time"
-	EndTime *metav1.Time `json:"endTime,omitempty"`
+	EndTime *metav1.Time `json:"endTime,omitempty" validate:"omitempty"`
 }
 
 // A PacketCaptureRule encapsulates a set of match criteria for traffic captured from an interface.
@@ -111,22 +111,22 @@ type PacketCaptureStatus struct {
 // that is identified via a node, its directory and the file names generated.
 type PacketCaptureFile struct {
 	// Node identifies with a physical node from the cluster via its hostname
-	Node string `json:"node,omitempty"`
+	Node string `json:"node,omitempty" validate:"omitempty"`
 
 	// Directory represents the path inside the calico-node container for the the generated files
-	Directory string `json:"directory,omitempty"`
+	Directory string `json:"directory,omitempty" validate:"omitempty"`
 
 	// FileNames represents the name of the generated file for a PacketCapture ordered alphanumerically.
 	// The active packet capture file will be identified using the following schema:
 	// "{workload endpoint name}_{host network interface}.pcap" .
 	// Rotated capture files name will contain an index matching the rotation timestamp.
-	FileNames []string `json:"fileNames,omitempty"`
+	FileNames []string `json:"fileNames,omitempty" validate:"omitempty,dive"`
 
 	// Determines whether a PacketCapture is capturing traffic from any interface
 	// attached to the current node
 
 	// +kubebuilder:validation:Enum=Capturing;Inactive
-	State *PacketCaptureState `json:"state,omitempty"`
+	State *PacketCaptureState `json:"state,omitempty" validate:"omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
