@@ -121,12 +121,6 @@ type PacketCaptureFile struct {
 	// "{workload endpoint name}_{host network interface}.pcap" .
 	// Rotated capture files name will contain an index matching the rotation timestamp.
 	FileNames []string `json:"fileNames,omitempty" validate:"omitempty,dive"`
-
-	// Determines whether a PacketCapture is capturing traffic from any interface
-	// attached to the current node
-
-	// +kubebuilder:validation:Enum=Capturing;Inactive
-	State PacketCaptureState `json:"state,omitempty" validate:"omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
