@@ -74,14 +74,15 @@ type PacketCaptureSpec struct {
 	// Defines the start time from which this PacketCapture will capture packets.
 	// If omitted or the value is in the past, the capture will start immediately.
 	// If the value is changed to a future time, capture will stop immediately and restart at that time
-	// +optional
 	StartTime metav1.Time `json:"startTime,omitempty"`
 
 	// Defines the end time at which this PacketCapture will stop capturing packets.
 	// If omitted the capture will continue indefinitely.
 	// If the value is changed to the past, capture will stop immediately.
-	// +optional
 	EndTime metav1.Time `json:"endTime,omitempty"`
+
+	// Just a silly string
+	SillyString string `json:"sillyString,omitempty"`
 }
 
 // A PacketCaptureRule encapsulates a set of match criteria for traffic captured from an interface.
